@@ -1,0 +1,41 @@
+<app-site-title>
+  {{'mainPage.title' | translate}}
+</app-site-title>
+
+<div class="steps">
+
+  <div class="site__centered">
+    <div class="steps__cover">
+
+      <div class="steps__item">
+        <a routerLink="/" class="steps__edit-mob"></a>
+        <h2 class="steps__title">{{'steps.step1.title.active' | translate}}</h2>
+        <div class="steps__wrap">
+          <app-step1-result [stepResultButton]="stepResultButton"></app-step1-result>
+        </div>
+      </div>
+
+      <div class="steps__item" #step2>
+        <h2 class="steps__title">{{'steps.step2.title.active.stamps9' | translate}}</h2>
+        <div class="steps__wrap">
+          <app-edit-form
+            (scrollToStep2)="scrollToStep2()"
+            [fileBtnConfig]="fileBtnConfig"
+            [addBackgroundBtnConfig]="addBackgroundBtnConfig"
+            [addStampBtnConfig]="addStampBtnConfig"
+            [constructorConfig]="constructorConfig"
+            [stepData]="stepData"></app-edit-form>
+        </div>
+      </div>
+
+      <div class="steps__item">
+        <h2 class="steps__title">{{'steps.step3.title.default' | translate}}</h2>
+      </div>
+
+      <div class="steps__item">
+        <h2 class="steps__title">{{'steps.step4.title.default' | translate}}</h2>
+      </div>
+
+    </div>
+  </div>
+</div>

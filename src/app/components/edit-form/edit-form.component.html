@@ -1,0 +1,120 @@
+<form class="edit-form"
+      [formGroup]="form"
+      (ngSubmit)="submit($event)">
+  <div class="edit-form__constructor">
+    <div class="site__row">
+
+      <div class="col-xs-12 col-sm-4 edit-form__preview">
+        <app-image-preview
+          #imagePreview
+          [addBackgroundBtnConfig]="addBackgroundBtnConfig"
+          [addStampBtnConfig]="addStampBtnConfig"
+          [constructorConfig]="constructorConfig"
+          (scrollToCropper)="onScrollToCropper()"
+          (imageData)="getFileData($event)"></app-image-preview>
+      </div>
+
+      <div class="col-xs-12 col-sm-8 edit-form__wrap">
+
+        <app-file-btn
+          *ngIf="files.length === 0; else uploadedPic"
+          (imageData)="getFileData($event)"
+          (scrollToCropper)="onScrollToCropper()"
+          [fileBtnConfig]="fileBtnConfig"
+          [constructorConfig]="constructorConfig"
+          [fileBtnText]="stepData.inputFile"></app-file-btn>
+
+        <ng-template #uploadedPic>
+          <app-uploaded-pic
+            [files]="files"
+            (onDeleteFile)="deleteFile($event)"></app-uploaded-pic>
+        </ng-template>
+
+        <div class="edit-form__info">
+          <p>{{"steps.step2.format" | translate}}</p>
+          <p>{{"steps.step2.extension" | translate}}</p>
+        </div>
+
+        <div class="edit-form__row">
+
+          <div class="edit-form__row-item">
+            <label class="edit-form__title" for="total-lists">{{"steps.step2.totalPages" | translate}}</label>
+            <mat-form-field appearance="outline">
+              <input
+                type="number"
+                id="total-lists"
+                name="total-lists"
+                (change)="totalListsChange()"
+                formControlName="totalLists"
+                min="1"
+                matInput>
+            </mat-form-field>
+          </div>
+
+          <div class="edit-form__row-item">
+            <div class="edit-form__title">{{"steps.step2.pageCost" | translate}}</div>
+            <div class="edit-form__txt">{{costPerPage/100 | number: '1.2-2'}} {{'currency.uah' | translate}}</div>
+          </div>
+
+          <div class="edit-form__row-item">
+            <div class="edit-form__title">{{"steps.step2.totalCost" | translate}}</div>
+            <div class="edit-form__txt">{{totalPrice/100 | number: '1.2-2'}} {{'currency.uah' | translate}}</div>
+          </div>
+
+        </div>
+
+        <div class="site__row">
+
+          <div class="col-xs-12 col-sm-6">
+            <div class="edit-form__title">{{"steps.step2.totalStamps" | translate}} 6</div>
+          </div>
+
+          <div class="col-xs-12 col-sm-6"></div>
+
+        </div>
+
+        <div class="edit-form__check">
+          <app-nice-check
+            [confirmation]="form.get('confirmation')"
+            [checkboxText]="stepData.checkboxText"></app-nice-check>
+        </div>
+
+      </div>
+
+<!--      <div>-->
+<!--        <img [src]="croppedImage" [style.border]="croppedImage ? '1px solid black' : 'none'" alt="">-->
+<!--      </div>-->
+
+    </div><!-- /site__row -->
+
+  </div><!-- /edit-form__constructor -->
+
+  <div #cropperWrap>
+    <app-format-wrap
+      #formatWrap
+      (changeRatio)="changeRatio($event)"
+      *ngIf="this.imageSrc && this.constructorConfig.type === 'postcard'"
+      [imageProperties]="imageProperties"></app-format-wrap>
+    <app-cropper-pic
+      *ngIf="imageSrc"
+      #cropper
+      (cancelEdit)="cancelEdit()"
+      (hideEdit)="hideEdit()"
+      [cropperConfig]="cropperConfig"></app-cropper-pic>
+  </div>
+
+  <div class="edit-form__btn" *ngIf="imageSrc">
+    <button
+      type="button"
+      (click)="onContinue()"
+      class="btn">{{ "button.continue" | translate }}</button>
+  </div><!-- /edit-form__btn -->
+
+  <div class="edit-form__btn" *ngIf="canShowSubmitBtn">
+    <button
+      type="submit"
+      [disabled]="form.invalid"
+      class="btn">{{ "button.continue" | translate }}</button>
+  </div><!-- /edit-form__btn -->
+
+</form><!-- /edit-form -->

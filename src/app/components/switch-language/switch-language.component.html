@@ -1,0 +1,13 @@
+<div class="switch-language"
+     (click)="wrapperClick($event)"
+     [class]="addingClass"
+     [class.opened] = isOpen>
+  <span class="switch-language__btn" (click)="isOpen = !isOpen">{{currentLanguage}}</span>
+  <div class="switch-language__list">
+    <ng-container *ngFor="let item of languages">
+      <span *ngIf="item != currentLanguage"
+            class="switch-language__item"
+            (click)="changeLanguage(item)">{{item}}</span>
+    </ng-container>
+  </div>
+</div>

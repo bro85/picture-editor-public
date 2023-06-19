@@ -1,0 +1,17 @@
+<div class="popup" [ngClass]="{'active': isVisiblePopup}">
+  <div class="popup__wrap">
+    <button class="popup__close" (click)="onClosePopup($event)"></button>
+    <div class="popup__title">{{'popup.orderInfo.title' | translate}}</div><!-- /popup__title -->
+    <div class="popup__inner"></div><!-- /popup__inner -->
+    <p>{{'popup.orderInfo.orderNumber' | translate}} <b>{{order.orderNumber}}</b></p>
+    <p><small>{{'popup.orderInfo.details' | translate}}</small></p>
+    <p>{{orderData[0]}} {{orderData[1]}}</p>
+    <p>{{orderData[2]}} {{orderData[3]}}</p>
+    <p>{{'popup.orderInfo.deliveryTypeTitle' | translate}} {{deliveryType}}</p>
+    <p>{{branchIndex}}</p>
+    <p class="popup__total"><b>{{totalCost}}</b></p>
+    <div class="popup__btn">
+      <div class="btn btn_2">{{'button.pay' | translate}}</div><!-- /btn -->
+    </div><!-- /popup__btn -->
+  </div><!-- /popup__wrap -->
+</div><!-- /popup -->

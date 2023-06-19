@@ -1,0 +1,42 @@
+@import "variables";
+
+.uploaded-pic__item {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 10px 15px 0;
+  padding-left: 25px;
+  user-select: none;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+.uploaded-pic__del {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url(/assets/img/delete-2.svg) no-repeat center;
+  width: 15px;
+  height: 20px;
+  cursor: pointer;
+}
+.uploaded-pic__txt {
+  font-size: 14px;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 500;
+  line-height: 1.7;
+  color: var(--font-color-1);
+}
+
+@media screen and (min-width: $desktop) {
+  .uploaded-pic__item {
+    margin: 0 10px 8px 0;
+  }
+  .uploaded-pic__del {
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

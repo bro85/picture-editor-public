@@ -1,0 +1,41 @@
+@import "variables";
+
+.file-btn {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 15px;
+}
+.file-btn__input {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+}
+.file-btn__txt {
+  color: var(--font-color-4);
+  font-family: 'Rubik', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.7;
+  &:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    background: url(/assets/img/file-input.svg);
+    width: 11px;
+    height: 20px;
+  }
+}
+
+@media screen and (min-width: $desktop) {
+  .file-btn {
+    margin-bottom: 8px;
+  }
+  .file-btn__txt {
+    border-bottom: 1px solid transparent;
+    transition: border-bottom 0.3s ease;
+    &:hover {
+      border-bottom: 1px solid currentColor;
+    }
+  }
+}

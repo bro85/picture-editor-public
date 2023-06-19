@@ -1,0 +1,19 @@
+<div *ngFor="let column of MENU; index as i"
+     class="site__footer-column">
+  <dl class="footer-menu">
+    <dt class="footer-menu__title">
+      <span
+        class="footer-menu__title-inner"
+        (click)="toggleShow(i)">{{column.title}}</span>
+    </dt>
+    <dd class="footer-menu__wrap"
+        [@accordion]="canShow['column' + (i+1)]">
+      <div class="footer-menu__inner">
+        <div *ngFor="let item of column.items"
+             class="footer-menu__item">
+          <a href="{{item.href}}" target="_blank" class="footer-menu__link">{{item.text}}</a>
+        </div>
+      </div>
+    </dd>
+  </dl>
+</div>

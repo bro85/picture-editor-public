@@ -1,0 +1,57 @@
+<footer class="site__footer">
+
+  <div class="site__footer-wrap">
+
+    <div class="site__centered">
+
+      <div class="site__footer-top">
+
+        <div class="site__footer-row" site__footer-menu></div><!-- /site__footer-row -->
+
+      </div><!-- /site__footer-top -->
+
+      <div class="site__footer-bottom">
+
+        <div class="site__footer-row">
+
+          <div class="site__footer-column">
+            <p>{{'address.location' | translate}}</p>
+            <p>01001, {{'address.country' | translate}}</p>
+            <p>{{'address.fax' | translate}} +380 44 12345</p>
+          </div><!-- /site__footer-column -->
+
+          <div class="site__footer-column">
+            <p>{{'address.contactCenter' | translate}}: <a href="tel:0800000111">0 800 000 111</a></p>
+            <p><a href="mailto:example@google.com">example@google.com</a></p>
+          </div><!-- /site__footer-column -->
+
+          <div class="site__footer-column">
+
+            <app-social></app-social>
+
+          </div><!-- /site__footer-column -->
+
+          <div class="site__footer-column site__footer-column_4">
+
+            <app-switch-language [addingClass]="'switch-language_footer'"></app-switch-language>
+
+          </div><!-- /site__footer-column -->
+
+        </div><!-- /site__footer-row -->
+
+      </div><!-- /site__footer-bottom -->
+
+    </div><!-- /site__centered -->
+
+  </div><!-- /site__footer-wrap -->
+
+  <div class="site__footer-copyright">
+
+    <div class="site__centered">
+      <p>1991-{{year}} {{'footer.copyright' | translate}}</p>
+      <p [innerHtml]="'footer.policy' | translate"></p>
+    </div><!-- /site__centered -->
+
+  </div><!-- /site__footer-copyright -->
+
+</footer><!-- /site__footer -->

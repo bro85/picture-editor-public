@@ -1,0 +1,32 @@
+<div #previewWrap
+     [ngClass]="wrapperClass"
+     [style.min-height]="minHeight">
+  <img *ngIf="backgroundImage && (constructorConfig.type === 'stamps-6' || constructorConfig.type === 'stamps-9' || constructorConfig.type === 'stamps-28' || constructorConfig.type === 'stamps-28-difference')"
+       src="{{backgroundImage}}"
+       class="image-preview__bg-pic"
+       alt="">
+  <div class="image-preview__wrap">
+    <img *ngIf="backgroundImage && (constructorConfig.type === 'postcard' || constructorConfig.type === 'envelope-c6' || constructorConfig.type === 'envelope-dl')"
+         src="{{backgroundImage}}"
+         class="image-preview__bg-pic"
+         alt="">
+    <div class="image-preview__item"
+         *ngFor="let item of [].constructor(totalStamps); index as i">
+      <span class="image-preview__mark">
+        <img *ngIf="frontImages[i]" src="{{frontImages[i].src}}" alt="" class="image-preview__mark-img">
+        <label *ngIf="canShowStampButton" class="image-preview__cross">
+          <input type="file" (change)="addStamp($event, i)">
+        </label>
+      </span>
+    </div>
+    <div *ngIf="constructorConfig.type === 'postcard' || constructorConfig.type === 'envelope-c6' || constructorConfig.type === 'envelope-dl'"
+         #previewDummy
+         [style.min-height]="minHeightDummy"
+         class="image-preview__dummy"></div>
+  </div>
+  <label *ngIf="canShowButtonForBackground"
+         class="image-preview__add-stamp">
+    <input type="file"
+           (change)="addBackground($event)">
+  </label>
+</div>

@@ -1,0 +1,7 @@
+<div class="uploaded-pic">
+  <span class="uploaded-pic__item"
+        *ngFor="let item of files">
+    <span class="uploaded-pic__del" (click)="deleteFile(item.index)"></span>
+    <span class="uploaded-pic__txt">{{item.name}}</span>
+  </span>
+</div>
